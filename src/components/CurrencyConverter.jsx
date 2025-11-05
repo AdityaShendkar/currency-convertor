@@ -6,4 +6,4 @@ const CurrencyConverter = () => {
   </div>;
 };
 
-export default CurrencyConvertor;
+export default CurrencyConverter;
