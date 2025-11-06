@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import CurrencyDropDown from "./CurrencyDropDown"
+import CurrencyDropDown from "./CurrencyDropDown";
 
 const CurrencyConverter = () => {
   const [currencies, setCurrencies] = useState([]);
@@ -38,7 +38,6 @@ const CurrencyConverter = () => {
       </h2>
 
       <div>
-        
         <CurrencyDropDown
           currencies={currencies}
           title="From: "
@@ -50,8 +49,8 @@ const CurrencyConverter = () => {
         <CurrencyDropDown
           currencies={currencies}
           title="To: "
-          currency={toCurrency}    
-          setCurrency={setToCurrency}     
+          currency={toCurrency}
+          setCurrency={setToCurrency}
           handleFavorite={handleFavorite}
         />
       </div>
@@ -87,10 +86,4 @@ const CurrencyConverter = () => {
   );
 };
 
-
-
-
-
 export default CurrencyConverter;
-
-
