@@ -1,11 +1,11 @@
 import { useState, useEffect } from "react";
-import CurrencyDropDown from "./CurrencyDropDown";
+import CurrencyDropDown from "./CurrencyDropDown"
 
 const CurrencyConverter = () => {
   const [currencies, setCurrencies] = useState([]);
   const [amount, setAmount] = useState(1);
-  const [fromCurrency, setfromCurrency] = useState("USD")
-  const [toCurrency, settoCurrency] = useState("INR")
+  const [fromCurrency, setFromCurrency] = useState("USD");
+  const [toCurrency, setToCurrency] = useState("INR");
 
   // AllCurrencies => https://api.frankfurter.dev/v1/currencies
 
@@ -14,22 +14,21 @@ const CurrencyConverter = () => {
       const res = await fetch("https://api.frankfurter.dev/v1/currencies");
       const data = await res.json();
       setCurrencies(Object.keys(data));
-      // console.log(data);
+      // console.log(data)
     } catch (error) {
       console.error("Fetching error", error);
     }
   };
-  
+
   useEffect(() => {
     fetchCurrencies();
   }, []);
   // console.log(currencies);
 
-  const convertCurrency = () => {
+  //conversion logic
+  const convertCurrency = () => {};
 
-
-  }
-  
+  const handleFavorite = () => {};
 
   // Conversion =>https://api.frankfurter.dev/v1/latest?base=usd&symbols=inr
   return (
@@ -39,9 +38,22 @@ const CurrencyConverter = () => {
       </h2>
 
       <div>
-        <CurrencyDropDown currencies={currencies}  title="From: "/>
+        
+        <CurrencyDropDown
+          currencies={currencies}
+          title="From: "
+          currency={fromCurrency}
+          setCurrency={setFromCurrency}
+          handleFavorite={handleFavorite}
+        />
         {/* Button swap */}
-        <CurrencyDropDown currencies={currencies} title="To: "/>
+        <CurrencyDropDown
+          currencies={currencies}
+          title="To: "
+          currency={toCurrency}    
+          setCurrency={setToCurrency}     
+          handleFavorite={handleFavorite}
+        />
       </div>
 
       <div>
@@ -60,8 +72,7 @@ const CurrencyConverter = () => {
           className=" w-full p-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-indigo-500 mt-1 "
         />
       </div>
-      <div 
-      className="flex justify-end mt-6">
+      <div className="flex justify-end mt-6">
         <button
           onClick={convertCurrency}
           className={`px-5 py-2 bg-indigo-600 text-white rounded-md hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2`}
@@ -76,4 +87,10 @@ const CurrencyConverter = () => {
   );
 };
 
+
+
+
+
 export default CurrencyConverter;
+
+
